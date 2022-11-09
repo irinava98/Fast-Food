@@ -9,12 +9,15 @@ namespace FastFood.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string Name { get; set; } = null!;
 
         [Required]
+        [MaxLength(70)]
         public string ShortDescription { get; set; }=null!;
 
         [Required]
+        [MaxLength(150)]
         public string LongDescription { get; set; } = null!;
 
         public decimal Price { get; set; }
@@ -22,12 +25,9 @@ namespace FastFood.Data.Models
         [Required]
         public string ImageUrl { get; set; } = null!;
 
-        [Required]
-        public string ImageThumbnailUrl=null!;
-
         public bool IsPreferredFood { get; set; }
 
-        public int InStock {get; set; }
+        public bool InStock {get; set; }
 
         [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }

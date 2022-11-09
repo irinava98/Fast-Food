@@ -4,9 +4,9 @@ namespace FastFood.Contracts
 {
     public interface IFoodService
     {
-        IEnumerable<Food> Foods { get; set; }
+        IEnumerable<Food> Foods { get; }
 
-        IEnumerable<Food> PreferredFoods { get; set; }
+        IEnumerable<Food> PreferredFoods { get;}
 
         Food GetFoodById(int id);
     }
