@@ -1,14 +1,17 @@
 ﻿using FastFood.Contracts;
+using FastFood.Data;
 using FastFood.Data.Models;
 
 namespace FastFood.Services
 {
     public class CategoryService : ICategoryService
     {
-        public IEnumerable<Category> Categories => new List<Category>()
+        private readonly ApplicationDbContext context;
+
+        public CategoryService(ApplicationDbContext context)
         {
-            new Category{ CategoryName = "Vegetarian", Description="All vegetarian foods"},
-            new Category {CategoryName = "Non-Vegetarian", Description="All non-vegetarian foods"}
-        };
+            this.context = context;
+        }
+        public IEnumerable<Category> Categories => context.Categories;
     }
 }

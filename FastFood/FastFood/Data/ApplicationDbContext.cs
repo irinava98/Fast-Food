@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FastFood.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FastFood.Data
@@ -8,6 +9,12 @@ namespace FastFood.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            
         }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Food> Foods { get; set; }
+
     }
 }
