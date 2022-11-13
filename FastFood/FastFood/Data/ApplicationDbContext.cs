@@ -16,5 +16,7 @@ namespace FastFood.Data
 
         public DbSet<Food> Foods { get; set; }
 
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
     }
 }
