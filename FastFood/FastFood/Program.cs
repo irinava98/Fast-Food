@@ -1,5 +1,6 @@
 using FastFood.Contracts;
 using FastFood.Data;
+using FastFood.Data.Models;
 using FastFood.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
+builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
+builder.Services.AddScoped(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddMvc();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 
@@ -34,7 +41,7 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthentication();
