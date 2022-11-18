@@ -1,4 +1,5 @@
-﻿using FastFood.Models;
+﻿using FastFood.Contracts;
+using FastFood.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,27 +7,22 @@ namespace FastFood.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IFoodService foodService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IFoodService foodService)
         {
-            _logger = logger;
+            this.foodService = foodService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                PreferredFoods = foodService.PreferredFoods
+            };
+           return View(homeViewModel);
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+            
     }
 }
+
