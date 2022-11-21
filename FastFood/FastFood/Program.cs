@@ -48,6 +48,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "categoryfilter",
+    pattern: "Food/{action}/{category?}",
+    defaults: new { Controller = "Food", action = "All" });
+    
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();

@@ -1,4 +1,5 @@
 ﻿using FastFood.Contracts;
+using FastFood.Data.Models;
 using FastFood.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +16,39 @@ namespace FastFood.Controllers
             this.foodService = foodService;
         }
 
-        public IActionResult All()
+        public IActionResult All(string category)
         {
-            var model = new FoodsViewModel();
-            model.Foods = foodService.Foods;
-            model.CurrentCategory = "FoodCategory";
+            string _category = category;
+            IEnumerable<Food> foods;
+
+
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                foods = foodService.Foods.OrderBy(f => f.Id);
+                currentCategory = "All foods";
+            }
+            else
+            {
+                if (string.Equals("Vegetarian", _category,StringComparison.OrdinalIgnoreCase))
+                {
+                    foods = foodService.Foods.Where(f => f.Category.CategoryName.Equals("Vegetarian")).OrderBy(f => f.Name);
+                }
+                else
+                {
+                    foods = foodService.Foods.Where(f => f.Category.CategoryName.Equals("Non-vegetarian")).OrderBy(f => f.Name);
+                }
+                currentCategory = _category;
+            }
+
+
+            var model = new FoodsViewModel
+            {
+                Foods = foods,
+                CurrentCategory = currentCategory
+            };
+           
             return View(model);
         }
     }
