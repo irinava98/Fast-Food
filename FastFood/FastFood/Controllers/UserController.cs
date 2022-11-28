@@ -1,4 +1,5 @@
 ﻿using FastFood.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -79,6 +80,7 @@ namespace FastFood.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();

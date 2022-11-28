@@ -1,5 +1,6 @@
 ﻿using FastFood.Contracts;
 using FastFood.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FastFood.Controllers
@@ -17,12 +18,14 @@ namespace FastFood.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Order order)
         {
             var items = shoppingCart.GetShoppingCartItems();
