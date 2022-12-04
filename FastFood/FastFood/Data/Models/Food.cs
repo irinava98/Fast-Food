@@ -17,7 +17,7 @@ namespace FastFood.Data.Models
         public string ShortDescription { get; set; }=null!;
 
         [Required]
-        [MaxLength(150)]
+        [MaxLength(300)]
         public string LongDescription { get; set; } = null!;
 
         public decimal Price { get; set; }
@@ -30,8 +30,8 @@ namespace FastFood.Data.Models
         public bool InStock {get; set; }
 
         [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set;}
     }
 }

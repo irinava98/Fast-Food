@@ -16,11 +16,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IFoodService, FoodService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IFoodService, FoodService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 
 builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
-builder.Services.AddScoped(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddTransient(sp => ShoppingCart.GetCart(sp));
 builder.Services.AddMvc();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
@@ -41,12 +42,15 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseSession();
 
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+DbInitializer.Seed(app);
 
 app.MapControllerRoute(
     name: "categoryfilter",

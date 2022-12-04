@@ -37,7 +37,7 @@ namespace FastFood.Controllers
                 }
                 else
                 {
-                    foods = foodService.Foods.Where(f => f.Category.CategoryName.Equals("Non-vegetarian")).OrderBy(f => f.Name);
+                    foods = foodService.Foods.Where(f => f.Category.CategoryName.Equals("Non-Vegetarian")).OrderBy(f => f.Name);
                 }
                 currentCategory = _category;
             }
