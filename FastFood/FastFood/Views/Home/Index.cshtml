@@ -6,8 +6,11 @@
 <h4>Cliet preferences</h4>
 
 <div class="row">
-    @foreach(var food in Model.PreferredFoods)
+    
+        @foreach(var food in Model.PreferredFoods)
         {
-            <partial name="../Shared/_FoodSummary.cshtml" for="PreferredFoods"></partial>
+            <partial name="../Shared/_FoodSummary.cshtml" for="@food"></partial>
         }
+    
+         
     </div>

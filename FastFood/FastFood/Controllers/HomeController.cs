@@ -14,11 +14,13 @@ namespace FastFood.Controllers
             this.foodService = foodService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(HomeViewModel model)
         {
+
             var homeViewModel = new HomeViewModel
             {
-                PreferredFoods = foodService.PreferredFoods
+                
+                PreferredFoods=this.foodService.PreferredFoods
             };
            return View(homeViewModel);
         }

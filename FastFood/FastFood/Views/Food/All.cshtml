@@ -1,4 +1,6 @@
-﻿<div>
+﻿@model FoodsViewModel
+
+<div>
     <h2>
         All Foods are shown here
     </h2>
@@ -8,6 +10,6 @@
     <h2>@Model.CurrentCategory</h2>
     foreach(var food in Model.Foods)
     {
-        <partial name="\Views\Shared\_FoodsSummary.cshtml"/>
+        <partial name="\Views\Shared\_FoodSummary.cshtml" for="Foods"/>
     }
 }
