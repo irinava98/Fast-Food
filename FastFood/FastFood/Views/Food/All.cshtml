@@ -10,6 +10,6 @@
     <h2>@Model.CurrentCategory</h2>
     foreach(var food in Model.Foods)
     {
-        <partial name="\Views\Shared\_FoodSummary.cshtml" for="Foods"/>
+        <partial name="\Views\Shared\_FoodSummary.cshtml" for="@food"/>
     }
 }

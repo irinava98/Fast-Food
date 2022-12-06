@@ -16,7 +16,7 @@ namespace FastFood.Controllers
             this.foodService = foodService;
         }
 
-        public IActionResult All(string category)
+        public IActionResult All(FoodsViewModel model,string category)
         {
             string _category = category;
             IEnumerable<Food> foods;
@@ -43,7 +43,7 @@ namespace FastFood.Controllers
             }
 
 
-            var model = new FoodsViewModel
+            model = new FoodsViewModel
             {
                 Foods = foods,
                 CurrentCategory = currentCategory

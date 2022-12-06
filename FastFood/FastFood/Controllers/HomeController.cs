@@ -16,13 +16,17 @@ namespace FastFood.Controllers
 
         public IActionResult Index(HomeViewModel model)
         {
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
 
-            var homeViewModel = new HomeViewModel
+            model = new HomeViewModel()
             {
                 
                 PreferredFoods=this.foodService.PreferredFoods
             };
-           return View(homeViewModel);
+           return View(model);
         }
             
     }
