@@ -6,7 +6,7 @@
         <div class="caption">
             <h3 class="pull-right">@Model.Price.ToString("c")</h3>
             <h3>
-                <a asp-controller="Food" asp-action="Details" asp-route-drinkId="@Model.Id">@Model.Name</a>
+                <a asp-controller="Food" asp-action="Details" asp-route-foodId="@Model.Id">@Model.Name</a>
             </h3>
             <p>@Model.ShortDescription</p>
         </div>

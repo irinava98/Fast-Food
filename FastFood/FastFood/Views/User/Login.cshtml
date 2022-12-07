@@ -9,17 +9,17 @@
             <h4>Create a new account and order your first drink today!</h4>
             <hr />
             <div class="form-group">
-                <label asp-for="UserName" class="col-md-2 control-label"></label>
+                <label asp-for="@Model.UserName" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
-                    <input asp-for="UserName" class="form-control" />
-                    <span asp-validation-for="UserName" class="text-danger"></span>
+                    <input asp-for="@Model.UserName" class="form-control" />
+                    <span asp-validation-for="@Model.UserName" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="col-md-2 control-label"></label>
+                <label asp-for="@Model.Password" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <input asp-for="@Model.Password" class="form-control" />
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group pull-right formPullRightButton">
