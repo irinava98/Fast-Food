@@ -1,10 +1,10 @@
-﻿@model FoodDetailsViewModel
+﻿@model Food
 
 <div class="container marginTop">
     <div class="row">
         <div class="card">
             <div class="text-center view overlay hm-white-slight">
-                <img src="@Model.ImageUrl" class="img-fluid" alt="">
+                <img src="@Model.ImageUrl" class="img-fluid">
                 <a href="#">
                     <div class="mask waves-effect waves-light"></div>
                 </a>
@@ -15,7 +15,7 @@
                 
                 <p class="card-text">@Model.LongDescription.</p>
                 <p class="btn btn-group pull-right">
-                    <a asp-controller="Drink" asp-action="List" class="btn btn-default">Show all drinks</a>
+                    <a asp-controller="Food" asp-action="All" class="btn btn-default">Show all foods</a>
                     <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart">
                         Add @Model.Name to cart
                     </a>

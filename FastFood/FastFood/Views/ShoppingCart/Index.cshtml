@@ -23,7 +23,7 @@
                     <td class="text-right">
                         @((line.Amount * line.Food.Price).ToString("c"))
                     </td>
-                    <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-drinkId="@line.Food.Id"></a></td>
+                    <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"></a></td>
                 </tr>
             }
         </tbody>
@@ -42,7 +42,7 @@
             <a class="btn btn-success" asp-controller="Order" asp-action="Checkout">Check out</a>
             <a class="btn-group">
                 <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Add more drinks<span class="caret"></span>
+                    Add more foods<span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a asp-controller="Food" asp-action="All" asp-route-category="Vegetarian">Vegetarian</a></li>

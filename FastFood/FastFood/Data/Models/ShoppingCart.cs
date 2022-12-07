@@ -13,11 +13,9 @@ namespace FastFood.Data.Models
         }
 
         [Key]
-        [Required]
-        public string Id { get; set; } = null!;
+        public string Id { get; set; }
 
         public virtual ICollection<ShoppingCartItem> Items { get; set; }= new HashSet<ShoppingCartItem>();
-
 
         public static ShoppingCart GetCart(IServiceProvider service)
         {
@@ -33,15 +31,17 @@ namespace FastFood.Data.Models
 
         }
 
-        public void AddToCart(Food food, int amount)
+
+        public void AddToCart(Food food,int amount)
         {
-            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCardId==Id);
+            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCartId==Id);
 
             if (shoppingCartItem == null)
             {
                 shoppingCartItem = new ShoppingCartItem()
                 {
-                    ShoppingCardId = Id,
+                    Id = food.Id,
+                    ShoppingCartId = Id,
                     Food = food,
                     Amount = 1,
 
@@ -58,7 +58,7 @@ namespace FastFood.Data.Models
 
         public void RemoveFromCart(Food food)
         {
-            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCardId == Id);
+            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCartId == Id);
 
 
 
@@ -80,12 +80,12 @@ namespace FastFood.Data.Models
 
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
-            return context.ShoppingCartItems.Where(c => c.ShoppingCardId == Id).Include(s => s.Food).ToList();
+            return context.ShoppingCartItems.Where(c => c.ShoppingCartId == Id).Include(s => s.Food).ToList();
         }
 
         public void ClearCard()
         {
-            var carItems = context.ShoppingCartItems.Where(cart => cart.ShoppingCardId == Id);
+            var carItems = context.ShoppingCartItems.Where(cart => cart.ShoppingCartId == Id);
 
             context.ShoppingCartItems.RemoveRange(carItems);
 
@@ -95,7 +95,7 @@ namespace FastFood.Data.Models
 
         public decimal GetShoppingCartTotal()
         {
-            var total = context.ShoppingCartItems.Where(c => c.ShoppingCardId == Id).Select(c => c.Food.Price * c.Amount).Sum();
+            var total = context.ShoppingCartItems.Where(c => c.ShoppingCartId == Id).Select(c => c.Food.Price * c.Amount).Sum();
             return total;
         }
     }

@@ -13,13 +13,11 @@
 <body>
     <nav>
         <div class="container">
-            <div class="navbar-header">
-               
-                <a asp-controller="Home" asp-action="Index">Fast Food</a>
-            </div>
+           
             <div>
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    
                     @await Component.InvokeAsync("CategoryMenu")
                     
                     @await Component.InvokeAsync("ShoppingCartSummary")

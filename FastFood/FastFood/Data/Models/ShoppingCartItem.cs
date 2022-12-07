@@ -16,11 +16,11 @@ namespace FastFood.Data.Models
         public virtual Food Food { get; set; } = null!;
 
 
-        [Required]
+        
         [ForeignKey(nameof(ShoppingCart))]
-        public string ShoppingCardId { get; set; } = null!;
+        public string? ShoppingCartId { get; set; } 
 
-        public virtual ShoppingCart ShoppingCart { get; set; } = null!;
+        public virtual ShoppingCart? ShoppingCart { get; set; }
 
        
 

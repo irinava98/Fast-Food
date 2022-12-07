@@ -4,6 +4,7 @@ using FastFood.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastFood.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221207192401_changingForeignKey")]
+    partial class changingForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,14 +211,14 @@ namespace FastFood.Data.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ShoppingCartId")
+                    b.Property<string>("ShoppingCardId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FoodId");
 
-                    b.HasIndex("ShoppingCartId");
+                    b.HasIndex("ShoppingCardId");
 
                     b.ToTable("ShoppingCartItems");
                 });
@@ -461,7 +463,7 @@ namespace FastFood.Data.Migrations
 
                     b.HasOne("FastFood.Data.Models.ShoppingCart", "ShoppingCart")
                         .WithMany("Items")
-                        .HasForeignKey("ShoppingCartId");
+                        .HasForeignKey("ShoppingCardId");
 
                     b.Navigation("Food");
 
