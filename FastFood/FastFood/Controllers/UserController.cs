@@ -28,7 +28,7 @@ namespace FastFood.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return View(model);
             }
@@ -62,7 +62,7 @@ namespace FastFood.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(LoginViewModel model)
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 var user = new IdentityUser()
                 {
