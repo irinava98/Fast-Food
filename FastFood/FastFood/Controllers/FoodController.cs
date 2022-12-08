@@ -54,7 +54,7 @@ namespace FastFood.Controllers
             return View(model);
         }
 
-        public ViewResult Search(string searchString)
+        public ViewResult Search(FoodsViewModel model,string searchString)
         {
             string _searchString = searchString;
             IEnumerable<Food> foods;
@@ -66,10 +66,10 @@ namespace FastFood.Controllers
             }
             else
             {
-                foods = foodService.Foods.Where(f => f.Name.ToLower().Contains(_searchString.ToLower()));
+                foods = foodService.Foods.Where(f => f.Name.ToLower().StartsWith(_searchString.ToLower()));
             }
 
-            return View("~/Views/Food/All.cshtml");
+            return View("~/Views/Food/All.cshtml", new FoodsViewModel { Foods = foods, CurrentCategory = "All foods" });
         }
 
         public ViewResult Details(int foodId)
