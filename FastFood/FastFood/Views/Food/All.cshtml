@@ -1,15 +1,8 @@
 ﻿@model FoodsViewModel
 
-<div>
-    <h2>
-        All Foods are shown here
-    </h2>
-</div>
-
-@{
-    <h2>@Model.CurrentCategory</h2>
-    foreach(var food in Model.Foods)
+<div class="row marginTop">
+    @foreach (var food in Model.Foods)
     {
         <partial name="/Views/Shared/_FoodSummary.cshtml" for="@food"/>
     }
-}
+</div>
