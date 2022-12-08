@@ -33,11 +33,13 @@ namespace FastFood.Controllers
             {
                 if (string.Equals("Vegetarian", _category,StringComparison.OrdinalIgnoreCase))
                 {
-                    foods = foodService.Foods.Where(f => f.Category.CategoryName.Equals("Vegetarian")).OrderBy(f => f.Name);
+                    currentCategory = "Vegetarian";
+                    foods = foodService.Foods.Where(f => f.Category?.CategoryName==currentCategory).OrderBy(f => f.Name);
                 }
                 else
                 {
-                    foods = foodService.Foods.Where(f => f.Category.CategoryName.Equals("Non-Vegetarian")).OrderBy(f => f.Name);
+                    currentCategory = "Non-Vegetarian";
+                    foods = foodService.Foods.Where(f => f.Category?.CategoryName==currentCategory).OrderBy(f => f.Name);
                 }
                 currentCategory = _category;
             }

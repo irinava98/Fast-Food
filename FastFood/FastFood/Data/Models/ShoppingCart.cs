@@ -15,7 +15,7 @@ namespace FastFood.Data.Models
         [Key]
         public string Id { get; set; }
 
-        public virtual ICollection<ShoppingCartItem> Items { get; set; }= new HashSet<ShoppingCartItem>();
+        public virtual ICollection<ShoppingCartItem>? Items { get; set; }= new HashSet<ShoppingCartItem>();
 
         public static ShoppingCart GetCart(IServiceProvider service)
         {
@@ -40,8 +40,8 @@ namespace FastFood.Data.Models
             {
                 shoppingCartItem = new ShoppingCartItem()
                 {
-                    Id = food.Id,
-                    ShoppingCartId = Id,
+                   
+                   ShoppingCartId=Id,
                     Food = food,
                     Amount = 1,
 

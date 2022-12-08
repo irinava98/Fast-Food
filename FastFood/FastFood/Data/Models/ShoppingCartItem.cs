@@ -11,9 +11,9 @@ namespace FastFood.Data.Models
         public int Amount { get; set; }
 
         [ForeignKey(nameof(Food))]
-        public int FoodId { get; set; }
+        public int? FoodId { get; set; }
 
-        public virtual Food Food { get; set; } = null!;
+        public virtual Food? Food { get; set; } = null!;
 
 
         
