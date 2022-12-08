@@ -1,12 +1,21 @@
 ﻿@model LoginViewModel
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
-
+<body>
 <div class="row loginForm">
     <div class="col-md-8 col-md-offset-2">
         <h2>Register</h2>
         <form asp-controller="User" asp-action="Register" method="post" class="form-horizontal" role="form">
-            <h4>Create a new account and order your first drink today!</h4>
+            <h4>Create a new account and order your food today!</h4>
             <hr />
             <div class="form-group">
                 <label asp-for="@Model.UserName" class="col-md-2 control-label"></label>
@@ -30,3 +39,6 @@
         </form>
     </div>
 </div>
+
+</body>
+</html>
