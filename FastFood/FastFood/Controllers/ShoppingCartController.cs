@@ -49,7 +49,7 @@ namespace FastFood.Controllers
             var selectedFood = foodService.Foods.FirstOrDefault(f => f.Id == foodId);
             if (selectedFood != null)
             {
-                shoppingCart.RemoveFromCart(selectedFood);
+                shoppingCart.RemoveFromCart(selectedFood.Id);
             }
             return RedirectToAction("Index");
         }

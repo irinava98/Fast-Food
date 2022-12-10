@@ -23,9 +23,9 @@ namespace FastFood.Data.Models
 
             var context = service.GetService<ApplicationDbContext>();
 
-            string cartId = session.GetString("Id") ?? Guid.NewGuid().ToString();
+            string cartId = session.GetString("Id") ;
 
-            session.SetString("Id", cartId);
+            
 
             return new ShoppingCart(context) { Id = cartId };
 
@@ -41,7 +41,7 @@ namespace FastFood.Data.Models
                 shoppingCartItem = new ShoppingCartItem()
                 {
                    
-                   ShoppingCartId=Id,
+                   
                     Food = food,
                     Amount = 1,
 
@@ -56,9 +56,9 @@ namespace FastFood.Data.Models
             context.SaveChanges();
         }
 
-        public void RemoveFromCart(Food food)
+        public void RemoveFromCart(int id)
         {
-            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCartId == Id);
+            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == id);
 
 
 
