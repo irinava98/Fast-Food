@@ -13,7 +13,7 @@ namespace FastFood.Data.Models
         }
 
         [Key]
-        public string Id { get; set; }
+        public string Id { get; set; } = null!;
 
         public virtual ICollection<ShoppingCartItem>? Items { get; set; }= new HashSet<ShoppingCartItem>();
 
@@ -56,17 +56,20 @@ namespace FastFood.Data.Models
             context.SaveChanges();
         }
 
-        public void RemoveFromCart(int id)
+        public int RemoveFromCart(Food food)
         {
-            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == id);
+            var shoppingCartItem =
+                    context.ShoppingCartItems.SingleOrDefault(
+                        s => s.Food.Id == food.Id);
 
-
+            var localAmount = 0;
 
             if (shoppingCartItem != null)
             {
                 if (shoppingCartItem.Amount > 1)
                 {
                     shoppingCartItem.Amount--;
+                    localAmount = shoppingCartItem.Amount;
                 }
                 else
                 {
@@ -76,6 +79,7 @@ namespace FastFood.Data.Models
 
             context.SaveChanges();
 
+            return localAmount;
         }
 
         public List<ShoppingCartItem> GetShoppingCartItems()

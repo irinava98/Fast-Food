@@ -2,6 +2,7 @@
 using FastFood.Data.Models;
 using FastFood.Models;
 using FastFood.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FastFood.Controllers
@@ -30,7 +31,7 @@ namespace FastFood.Controllers
 
             return View(shoppingCartViewModel);
         }
-
+        [Authorize]
         public IActionResult AddToShoppingCart(int foodId)
         {
             var selectedFood=foodService.Foods.FirstOrDefault(f=>f.Id==foodId);
@@ -44,12 +45,13 @@ namespace FastFood.Controllers
         }
 
 
+
         public IActionResult RemoveFromShoppingCart(int foodId)
         {
-            var selectedFood = foodService.Foods.FirstOrDefault(f => f.Id == foodId);
-            if (selectedFood != null)
+            var selectedDrink = foodService.Foods.FirstOrDefault(f => f.Id == foodId);
+            if (selectedDrink != null)
             {
-                shoppingCart.RemoveFromCart(selectedFood.Id);
+                shoppingCart.RemoveFromCart(selectedDrink);
             }
             return RedirectToAction("Index");
         }
