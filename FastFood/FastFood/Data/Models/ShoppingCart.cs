@@ -56,30 +56,30 @@ namespace FastFood.Data.Models
             context.SaveChanges();
         }
 
-        public int RemoveFromCart(Food food)
+        public void RemoveFromCart(Food food)
         {
             var shoppingCartItem =
-                    context.ShoppingCartItems.SingleOrDefault(
-                        s => s.Food.Id == food.Id);
+                    context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCartId == Id);
 
-            var localAmount = 0;
+            
 
             if (shoppingCartItem != null)
             {
                 if (shoppingCartItem.Amount > 1)
                 {
                     shoppingCartItem.Amount--;
-                    localAmount = shoppingCartItem.Amount;
+                    
+
                 }
                 else
                 {
-                    context.ShoppingCartItems.Remove(shoppingCartItem);
+                    context.ShoppingCartItems.RemoveRange(shoppingCartItem);
                 }
             }
 
             context.SaveChanges();
 
-            return localAmount;
+        
         }
 
         public List<ShoppingCartItem> GetShoppingCartItems()

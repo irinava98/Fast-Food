@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFood", "FastFood\FastFood.csproj", "{FFB93A71-4864-4A0F-B94D-D1898168D290}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFood", "FastFood\FastFood.csproj", "{FFB93A71-4864-4A0F-B94D-D1898168D290}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFoodTests", "FastFoodTests\FastFoodTests.csproj", "{6209534B-AECB-4F45-BAB2-2BB72CDF0CB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FFB93A71-4864-4A0F-B94D-D1898168D290}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFB93A71-4864-4A0F-B94D-D1898168D290}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFB93A71-4864-4A0F-B94D-D1898168D290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6209534B-AECB-4F45-BAB2-2BB72CDF0CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6209534B-AECB-4F45-BAB2-2BB72CDF0CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6209534B-AECB-4F45-BAB2-2BB72CDF0CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6209534B-AECB-4F45-BAB2-2BB72CDF0CB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
