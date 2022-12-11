@@ -15,7 +15,7 @@ namespace FastFood.Data.Models
 
         public virtual Food? Food { get; set; } = null!;
 
-
+        public bool IsDeleted { get; set; } = false;
         
         [ForeignKey(nameof(ShoppingCart))]
         public string? ShoppingCartId { get; set; } 

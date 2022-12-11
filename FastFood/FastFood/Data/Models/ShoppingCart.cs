@@ -73,11 +73,11 @@ namespace FastFood.Data.Models
                 }
                 else
                 {
-                    context.ShoppingCartItems.RemoveRange(shoppingCartItem);
+                    shoppingCartItem.IsDeleted = true;
                 }
             }
 
-            context.SaveChanges();
+          
 
         
         }

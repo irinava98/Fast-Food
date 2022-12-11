@@ -48,10 +48,10 @@ namespace FastFood.Controllers
 
         public IActionResult RemoveFromShoppingCart(int foodId)
         {
-            var selectedDrink = foodService.Foods.FirstOrDefault(f => f.Id == foodId);
-            if (selectedDrink != null)
+            var selectedFood = foodService.Foods.First(f => f.Id == foodId);
+            if (selectedFood != null)
             {
-                shoppingCart.RemoveFromCart(selectedDrink);
+                shoppingCart.RemoveFromCart(selectedFood);
             }
             return RedirectToAction("Index");
         }
