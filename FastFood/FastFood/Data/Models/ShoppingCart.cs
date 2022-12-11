@@ -77,9 +77,9 @@ namespace FastFood.Data.Models
                 }
             }
 
-          
+            context.SaveChanges();
 
-        
+
         }
 
         public List<ShoppingCartItem> GetShoppingCartItems()
