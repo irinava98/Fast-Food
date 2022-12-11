@@ -1,4 +1,8 @@
 ﻿@model Food
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<IdentityUser> SignInManager
 
 <div class="container marginTop">
     <div class="row">
@@ -16,9 +20,13 @@
                 <p class="card-text">@Model.LongDescription.</p>
                 <p class="btn btn-group pull-right">
                     <a asp-controller="Food" asp-action="All" class="btn btn-default">Show all foods</a>
-                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart">
                         Add @Model.Name to cart
                     </a>
+                    }
+                    
                 </p>
             </div>
         </div>

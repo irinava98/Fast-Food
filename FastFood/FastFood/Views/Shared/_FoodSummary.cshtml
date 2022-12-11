@@ -1,4 +1,8 @@
 ﻿@model Food
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<IdentityUser> SignInManager
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
@@ -10,12 +14,17 @@
             </h3>
             <p>@Model.ShortDescription</p>
         </div>
-        <div class="addToCart text-right">
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+         <div class="addToCart text-right">
             <p class="button ">
                 <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-foodId="@Model.Id">
                     Add to cart
                 </a>
             </p>
         </div>
+        }
+       
     </div>
 </div>
