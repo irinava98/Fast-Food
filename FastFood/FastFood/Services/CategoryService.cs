@@ -11,7 +11,10 @@ namespace FastFood.Services
         public CategoryService(ApplicationDbContext context)
         {
             this.context = context;
+
         }
         public IEnumerable<Category> Categories => context.Categories;
+
+        public ICategoryService Object { get; }
     }
 }

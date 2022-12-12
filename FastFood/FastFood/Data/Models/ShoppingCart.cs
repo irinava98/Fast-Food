@@ -41,7 +41,7 @@ namespace FastFood.Data.Models
                 shoppingCartItem = new ShoppingCartItem()
                 {
                    
-                   
+                    
                     Food = food,
                     Amount = 1,
 
@@ -58,25 +58,17 @@ namespace FastFood.Data.Models
 
         public void RemoveFromCart(Food food)
         {
-            var shoppingCartItem =
-                    context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCartId == Id);
+            var shoppingCartItem = context.ShoppingCartItems.SingleOrDefault(s => s.Food.Id == food.Id && s.ShoppingCartId == Id);
 
-            
-
-            if (shoppingCartItem != null)
+            if (shoppingCartItem.Amount == 1 )
             {
-                if (shoppingCartItem.Amount > 1)
-                {
-                    shoppingCartItem.Amount--;
-                    
-
-                }
-                else
-                {
-                    shoppingCartItem.IsDeleted = true;
-                }
+               
+                context.ShoppingCartItems.Remove(shoppingCartItem);
             }
-
+            else
+            {
+                shoppingCartItem.Amount--;
+            }
             context.SaveChanges();
 
 

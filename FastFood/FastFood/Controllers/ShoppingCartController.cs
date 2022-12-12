@@ -41,19 +41,22 @@ namespace FastFood.Controllers
                 shoppingCart.AddToCart(selectedFood, 1);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
 
 
-
+        
         public IActionResult RemoveFromShoppingCart(int foodId)
         {
-            var selectedFood = foodService.Foods.First(f => f.Id == foodId);
+
+            var selectedFood = foodService.Foods.FirstOrDefault(f => f.Id == foodId);
+
             if (selectedFood != null)
             {
                 shoppingCart.RemoveFromCart(selectedFood);
-            }
-            return RedirectToAction("Index");
+            } 
+            
+            return RedirectToAction("Index","Home");
         }
 
     }
