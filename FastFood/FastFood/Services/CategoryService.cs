@@ -15,6 +15,6 @@ namespace FastFood.Services
         }
         public IEnumerable<Category> Categories => context.Categories;
 
-        public ICategoryService Object { get; }
+       
     }
 }
